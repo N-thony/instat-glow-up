@@ -1,8 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Download as DownloadIcon, FileText, Github } from "lucide-react";
+import { Download as DownloadIcon, FileText, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+
+const previousVersions = [
+  { version: "0.8.8", date: "September 15, 2025", size: "485 MB" },
+  { version: "0.8.7", date: "July 22, 2025", size: "482 MB" },
+  { version: "0.8.6", date: "May 10, 2025", size: "478 MB" },
+  { version: "0.8.5", date: "March 5, 2025", size: "475 MB" },
+  { version: "0.8.4", date: "January 12, 2025", size: "470 MB" },
+  { version: "0.8.3", date: "November 8, 2024", size: "468 MB" },
+];
 
 const Download = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <section id="download" className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,7 +32,7 @@ const Download = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <Card className="p-8 lg:p-12 bg-gradient-card border-border shadow-large">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div>
@@ -66,12 +83,83 @@ const Download = () => {
             </div>
           </Card>
 
-          <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-4">Looking for a specific release?</p>
-            <Button variant="ghost" className="gap-2">
-              <Github className="h-4 w-4" />
-              View All Releases on GitHub
-            </Button>
+          <div className="mt-12">
+            <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+              <CollapsibleTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full border-2 flex items-center justify-center gap-2"
+                >
+                  {isOpen ? (
+                    <>
+                      <ChevronUp className="h-5 w-5" />
+                      Hide Previous Versions
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="h-5 w-5" />
+                      View Previous Versions
+                    </>
+                  )}
+                </Button>
+              </CollapsibleTrigger>
+              
+              <CollapsibleContent className="mt-6">
+                <Card className="overflow-hidden">
+                  <div className="overflow-x-auto">
+                    <table className="w-full">
+                      <thead className="bg-muted/50">
+                        <tr>
+                          <th className="text-left py-4 px-6 font-display font-semibold text-foreground">
+                            Version
+                          </th>
+                          <th className="text-left py-4 px-6 font-display font-semibold text-foreground">
+                            Release Date
+                          </th>
+                          <th className="text-left py-4 px-6 font-display font-semibold text-foreground">
+                            Size
+                          </th>
+                          <th className="text-right py-4 px-6 font-display font-semibold text-foreground">
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {previousVersions.map((version, index) => (
+                          <tr
+                            key={version.version}
+                            className="border-t border-border hover:bg-muted/30 transition-colors"
+                          >
+                            <td className="py-4 px-6 font-medium text-foreground">
+                              R-Instat {version.version}
+                            </td>
+                            <td className="py-4 px-6 text-muted-foreground">
+                              {version.date}
+                            </td>
+                            <td className="py-4 px-6 text-muted-foreground">
+                              {version.size}
+                            </td>
+                            <td className="py-4 px-6 text-right">
+                              <div className="flex gap-2 justify-end">
+                                <Button size="sm" variant="outline">
+                                  <DownloadIcon className="mr-1 h-4 w-4" />
+                                  Download
+                                </Button>
+                                <Button size="sm" variant="ghost">
+                                  <FileText className="mr-1 h-4 w-4" />
+                                  Notes
+                                </Button>
+                              </div>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </Card>
+              </CollapsibleContent>
+            </Collapsible>
           </div>
         </div>
       </div>
