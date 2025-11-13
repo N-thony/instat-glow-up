@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Linkedin, Mail, Github } from "lucide-react";
 
-const coreTeam = [
+const team = [
   {
     name: "Prof. Roger Stern",
     role: "Project Director",
@@ -22,9 +22,6 @@ const coreTeam = [
     role: "Statistical Consultant",
     image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop",
   },
-];
-
-const developers = [
   {
     name: "Shadrack Kibet",
     role: "Software Engineer",
@@ -69,9 +66,9 @@ const developers = [
 
 const Team = () => {
   return (
-    <section id="team" className="py-20 lg:py-32 bg-muted/30">
+    <section id="team" className="py-12 lg:py-16 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
             Meet Our Team
           </h2>
@@ -80,86 +77,42 @@ const Team = () => {
           </p>
         </div>
 
-        {/* Core Team */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-display font-semibold text-foreground mb-8 text-center">
-            Core Leadership
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
-            {coreTeam.map((member, index) => (
-              <Card
-                key={index}
-                className="overflow-hidden hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-border animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {team.map((member, index) => (
+            <Card
+              key={index}
+              className="overflow-hidden hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-border animate-fade-in"
+              style={{ animationDelay: `${index * 0.05}s` }}
+            >
+              <div className="aspect-square overflow-hidden">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                />
+              </div>
+              <div className="p-5">
+                <h4 className="text-base font-display font-semibold text-foreground mb-1">
+                  {member.name}
+                </h4>
+                <p className="text-muted-foreground text-sm mb-3">{member.role}</p>
+                <div className="flex gap-2">
+                  <button className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+                    <Linkedin className="h-3 w-3 text-primary" />
+                  </button>
+                  <button className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+                    <Mail className="h-3 w-3 text-primary" />
+                  </button>
+                  <button className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
+                    <Github className="h-3 w-3 text-primary" />
+                  </button>
                 </div>
-                <div className="p-6">
-                  <h4 className="text-lg font-display font-semibold text-foreground mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-muted-foreground text-sm mb-4">{member.role}</p>
-                  <div className="flex gap-2">
-                    <button className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
-                      <Linkedin className="h-3.5 w-3.5 text-primary" />
-                    </button>
-                    <button className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
-                      <Mail className="h-3.5 w-3.5 text-primary" />
-                    </button>
-                    <button className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
-                      <Github className="h-3.5 w-3.5 text-primary" />
-                    </button>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
+              </div>
+            </Card>
+          ))}
         </div>
 
-        {/* Development Team */}
-        <div>
-          <h3 className="text-2xl font-display font-semibold text-foreground mb-8 text-center">
-            Development Team
-          </h3>
-          <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {developers.map((member, index) => (
-              <Card
-                key={index}
-                className="overflow-hidden hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-border animate-fade-in"
-                style={{ animationDelay: `${(index + 4) * 0.08}s` }}
-              >
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
-                  />
-                </div>
-                <div className="p-5">
-                  <h4 className="text-base font-display font-semibold text-foreground mb-1">
-                    {member.name}
-                  </h4>
-                  <p className="text-muted-foreground text-sm mb-3">{member.role}</p>
-                  <div className="flex gap-2">
-                    <button className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
-                      <Linkedin className="h-3 w-3 text-primary" />
-                    </button>
-                    <button className="w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors">
-                      <Mail className="h-3 w-3 text-primary" />
-                    </button>
-                  </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-16 text-center">
+        <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/5 rounded-full">
             <span className="text-foreground font-medium">Plus many more contributors from our global community</span>
           </div>
