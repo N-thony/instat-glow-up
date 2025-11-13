@@ -30,7 +30,7 @@ const Download = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section id="download" className="py-12 lg:py-16 bg-background">
+    <section id="download" className="scroll-mt-24 py-12 lg:py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-4">
