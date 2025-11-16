@@ -77,7 +77,7 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 max-w-7xl mx-auto">
           {team.map((member, index) => (
             <Card
               key={index}
