@@ -65,45 +65,49 @@ const Activities = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {activities.map((activity, index) => (
-            <Card
-              key={index}
-              className="overflow-hidden hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-border animate-fade-in group"
-              style={{ animationDelay: `${index * 0.05}s` }}
-            >
-              <div className="aspect-video overflow-hidden relative">
-                <img
-                  src={activity.image}
-                  alt={activity.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold shadow-medium">
-                  {activity.attendees}
-                </div>
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-display font-semibold text-foreground mb-3 line-clamp-2">
-                  {activity.title}
-                </h3>
-                
-                <div className="flex flex-col gap-2 mb-3">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Calendar className="h-4 w-4 text-primary" />
-                    <span>{activity.date}</span>
+        <div className="max-w-7xl mx-auto border rounded-lg p-6 bg-card shadow-xl">
+          <div className="max-h-[600px] overflow-y-auto pr-2">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+              {activities.map((activity, index) => (
+                <Card
+                  key={index}
+                  className="overflow-hidden hover:shadow-large transition-all duration-300 hover:-translate-y-2 border-border animate-fade-in group"
+                  style={{ animationDelay: `${index * 0.05}s` }}
+                >
+                  <div className="aspect-video overflow-hidden relative">
+                    <img
+                      src={activity.image}
+                      alt={activity.title}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute top-4 right-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-semibold shadow-medium">
+                      {activity.attendees}
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <MapPin className="h-4 w-4 text-primary" />
-                    <span>{activity.location}</span>
+                  <div className="p-5">
+                    <h3 className="text-lg font-display font-semibold text-foreground mb-3 line-clamp-2">
+                      {activity.title}
+                    </h3>
+                    
+                    <div className="flex flex-col gap-2 mb-3">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4 text-primary" />
+                        <span>{activity.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <MapPin className="h-4 w-4 text-primary" />
+                        <span>{activity.location}</span>
+                      </div>
+                    </div>
+                    
+                    <p className="text-sm text-muted-foreground line-clamp-3">
+                      {activity.description}
+                    </p>
                   </div>
-                </div>
-                
-                <p className="text-sm text-muted-foreground line-clamp-3">
-                  {activity.description}
-                </p>
-              </div>
-            </Card>
-          ))}
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 text-center">
